@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamil Nadu Tourism - Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-map-marked-alt"></i> Travel Aura</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active">
+          <a href="#" onclick="showSection('overview')">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('destinations')">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Destinations</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('bookings')">
+            <i class="fas fa-calendar-check"></i>
+            <span>My Bookings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('favorites')">
+            <i class="fas fa-heart"></i>
+            <span>Favorites</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('profile')">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('support')">
+            <i class="fas fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <a href="#" id="logoutBtn" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="header-right">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search destinations...">
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <span id="userName">Welcome!</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Overview Section -->
+      <section id="overview" class="content-section active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="visitedCount">-</h3>
+              <p>Places Visited</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="upcomingCount">-</h3>
+              <p>Upcoming Trips</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="favoriteCount">-</h3>
+              <p>Favorite Places</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="averageRating">-</h3>
+              <p>Average Rating</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Quick Actions -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-rocket"></i> Quick Actions</h3>
+            </div>
+            <div class="quick-actions">
+              <button class="action-btn" onclick="showAdventurePage()">
+                <i class="fas fa-mountain"></i>
+                <span>Adventure</span>
+              </button>
+              <button class="action-btn" onclick="showFoodPage()">
+                <i class="fas fa-utensils"></i>
+                <span>Food & Drink</span>
+              </button>
+              <button class="action-btn" onclick="showSection('destinations')">
+                <i class="fas fa-camera"></i>
+                <span>Explore</span>
+              </button>
+              <button class="action-btn" onclick="showSection('bookings')">
+                <i class="fas fa-calendar-plus"></i>
+                <span>Book Trip</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Activities -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-clock"></i> Recent Activities</h3>
+            </div>
+            <div class="activity-list" id="activityList">
+              <!-- JS will render activities here -->
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="activity-details">
+                  <p style="text-align: center;">No Activity</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popular Destinations -->
+          <div class="dashboard-card full-width">
+            <div class="card-header">
+              <h3><i class="fas fa-fire"></i> Popular Destinations</h3>
+              <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="destinations-grid" id="popularDestinationsGrid">
+              <!-- JS will render popular destinations here -->
+              <div class="destination-card" onclick="showDestinationDetails('ooty')">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80')"></div>
+                <div class="destination-info">
+                  <h4>Ooty</h4>
+                  <p><i class="fas fa-star"></i> 4.8 (1,234 reviews)</p>
+                  <span class="destination-type">Hill Station</span>
+                </div>
+              </div>
+              <div class="destination-card" onclick="showDestinationDetails('kodaikanal')">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=300&q=80')"></div>
+                <div class="destination-info">
+                  <h4>Kodaikanal</h4>
+                  <p><i class="fas fa-star"></i> 4.7 (892 reviews)</p>
+                  <span class="destination-type">Hill Station</span>
+                </div>
+              </div>
+              <div class="destination-card" onclick="showDestinationDetails('rameswaram')">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=300&q=80')"></div>
+                <div class="destination-info">
+                  <h4>Rameswaram</h4>
+                  <p><i class="fas fa-star"></i> 4.6 (756 reviews)</p>
+                  <span class="destination-type">Spiritual</span>
+                </div>
+              </div>
+              <div class="destination-card" onclick="showDestinationDetails('mahabalipuram')">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=300&q=80')"></div>
+                <div class="destination-info">
+                  <h4>Mahabalipuram</h4>
+                  <p><i class="fas fa-star"></i> 4.5 (634 reviews)</p>
+                  <span class="destination-type">Heritage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Destinations Section -->
+      <section id="destinations" class="content-section">
+        <div class="section-header">
+          <h2>Explore Destinations</h2>
+          <div class="filter-tabs">
+            <button class="filter-tab active" onclick="filterDestinations('all')">All</button>
+            <button class="filter-tab" onclick="filterDestinations('hill-station')">Hill Stations</button>
+            <button class="filter-tab" onclick="filterDestinations('beach')">Beaches</button>
+            <button class="filter-tab" onclick="filterDestinations('temple')">Temples</button>
+            <button class="filter-tab" onclick="filterDestinations('heritage')">Heritage</button>
+          </div>
+        </div>
+        <div class="destinations-list" id="destinationsList">
+          <!-- Destinations will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Bookings Section -->
+      <!-- Bookings Section -->
+      <section id="bookings" class="content-section">
+      <div class="section-header">
+        <h2>My Bookings</h2>
+    <!-- ⬇️ CHANGE THIS LINE -->
+    <button class="btn-primary" onclick="openBookingForm()">
+      <i class="fas fa-plus"></i> New Booking
+    </button>
+  </div>
+  <div class="bookings-list" id="bookingsList">
+    <!-- Bookings will be populated by JavaScript -->
+  </div>
+</section>
+
+
+      <div id="dynamicPagesContainer" class="content-section" style="display:none;"></div>
+      
+      <!-- Favorites Section -->
+      <section id="favorites" class="content-section">
+        <div class="section-header">
+          <h2>My Favorite Places</h2>
+        </div>
+        <div class="favorites-grid" id="favoritesGrid">
+          <!-- Favorites will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile" class="content-section">
+        <div class="profile-container">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+              <h2 id="profileName">User Name</h2>
+              <p id="profileEmail">user@example.com</p>
+            </div>
+            <button class="btn-primary" onclick="editProfile()">Edit Profile</button>
+          </div>
+          
+          <div class="profile-content">
+            <div class="profile-section">
+              <h3>Personal Information</h3>
+              <div class="info-grid">
+                <div class="info-item">
+                  <label>Username</label>
+                  <span id="profileUsername">username</span>
+                </div>
+                <div class="info-item">
+                  <label>Email</label>
+                  <span id="profileEmailDetail">user@example.com</span>
+                </div>
+                <div class="info-item">
+                  <label>Phone</label>
+                  <span id="profilePhone">+91 9876543210</span>
+                </div>
+                <div class="info-item">
+                  <label>Address</label>
+                  <span id="profileAddress">Chennai, Tamil Nadu</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="profile-section">
+              <h3>Travel Preferences</h3>
+              <div class="preferences-grid">
+                <div class="preference-item">
+                  <i class="fas fa-mountain"></i>
+                  <span>Adventure Tourism</span>
+                </div>
+                <div class="preference-item">
+                  <i class="fas fa-utensils"></i>
+                  <span>Food Tourism</span>
+                </div>
+                <div class="preference-item">
+                  <i class="fas fa-camera"></i>
+                  <span>Photography</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Support Section -->
+      <section id="support" class="content-section">
+        <div class="support-container">
+          <h2>Help & Support</h2>
+          <div class="support-grid">
+            <div class="support-card">
+              <i class="fas fa-question-circle"></i>
+              <h3>FAQ</h3>
+              <p>Find answers to commonly asked questions</p>
+              <button class="btn-outline">View FAQ</button>
+            </div>
+            <div class="support-card">
+              <i class="fas fa-envelope"></i>
+              <h3>Contact Us</h3>
+              <p>Get in touch with our support team</p>
+              <button class="btn-outline">Contact</button>
+            </div>
+            <div class="support-card">
+              <i class="fas fa-phone"></i>
+              <h3>Call Support</h3>
+              <p>Speak directly with our representatives</p>
+              <button class="btn-outline">Call Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Booking Form Modal -->
+      <div id="bookingModal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeBookingForm()">&times;</span>
+          <h2>New Booking</h2>
+          
+          <label for="destinationSearch">Search Destination</label>
+          <input type="text" id="destinationSearch" placeholder="Type destination..." onkeyup="filterDestinationsList()">
+          <ul id="destinationResults" class="search-results"></ul>
+
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" id="startDate">
+          </div>
+          
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" id="endDate">
+          </div>
+          
+          <div class="form-group">
+            <label>Travelers</label>
+            <input type="number" id="travelers" min="1" value="1">
+          </div>
+
+          <button class="btn-primary" onclick="submitBooking()">Confirm Booking</button>
+        </div>
+      </div>
+      <!-- Edit Profile Modal -->
+      <div id="editProfileModal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeEditProfileForm()">&times;</span>
+          <h2>Edit Profile</h2>
+          <div class="form-group">
+            <label>Username</label>
+              <input type="text" id="editUsername">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="editEmail">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" id="editPhone">
+          </div>  
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="editAddress">
+          </div>
+          <button class="btn-primary" onclick="submitProfileEdit()">Save Changes</button>
+        </div>
+      </div>  
+
+
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

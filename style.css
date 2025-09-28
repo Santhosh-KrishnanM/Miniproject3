@@ -1,0 +1,367 @@
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  background: #000;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li {
+  position: relative;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+nav ul li:hover {
+  color: #ffcc00;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 10px 0;
+  border-radius: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+nav ul li ul li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.slideshow-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('1.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  z-index: 1;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(0,0,0,0.7);
+  max-width: 90vw;
+  z-index: 2;
+}
+
+.overlay-text h1 {
+  font-size: 5vw;
+  font-weight: 900;
+  margin-bottom: 0.3em;
+}
+
+.overlay-text p {
+  font-size: 1.8vw;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.experiences {
+  background: #111;
+  color: white;
+  padding: 80px 20px 100px 20px;
+  text-align: center;
+}
+
+.experiences h2 {
+  font-size: 3rem;
+  color: #f9c74f;
+  text-shadow: 0 0 10px #f9c74f;
+  margin-bottom: 50px;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.box {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-10px);
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.box .text {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  z-index: 2;
+  transition: bottom 0.4s ease;
+}
+
+.box:hover .text {
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+.box.adventure {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+}
+
+.box.eat {
+  background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');
+}
+
+.box.spiritual {
+  background-image: url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=800&q=80');
+}
+
+#adventurePage, #foodPage {
+  display: none;
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.video-section {
+  text-align: center;
+  color: white;
+  padding: 50px;
+}
+
+.video-section h2 {
+  margin-bottom: 20px;
+}
+
+.video-section video {
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+#loginModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  width: 320px;
+  color: white;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.toggle-link {
+  margin-top: 15px;
+  color: #ffd;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.login-btn {
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  color: #ffcc00;
+}
+
+.error-msg {
+  color: #ffcc00;
+  font-size: 0.9em;
+  margin-top: -8px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.back-btn {
+  margin: 20px; padding: 10px; background-color: #ffcc00; border: none; border-radius: 8px; cursor: pointer;
+}
+
+/* Welcome Page styling */
+#welcomePage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 3000;
+}
+
+.welcome-content {
+  background: rgba(255,255,255,0.08);
+  padding: 40px 32px;
+  border-radius: 18px;
+  box-shadow: 0 0 24px rgba(255,255,255,0.15);
+  color: #fff;
+  text-align: center;
+}
+
+.welcome-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #ffcc00;
+}
+
+.welcome-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Main Page styling */
+#mainPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 3000;
+}
+
+.main-content {
+  background: rgba(255,255,255,0.09);
+  padding: 45px 36px;
+  border-radius: 20px;
+  box-shadow: 0 0 24px rgba(255,255,255,0.16);
+  color: #fff;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+  color: #ffcc00;
+}
+
+.main-content p {
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+}
+
+.main-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.main-actions button {
+  min-width: 140px;
+  font-size: 1rem;
+}

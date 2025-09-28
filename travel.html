@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tamil Nadu Tourism</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <ul>
+    <li>
+      Destinations
+      <ul>
+        <li>MADURAI</li>
+        <li>CHENNAI</li>
+        <li>THENI</li>
+        <li>THANJAVUR</li>
+        <li>COIMBATORE</li>
+        <li>OOTY</li>
+        <li>KODAIKANAL</li>
+        <li>TENKASI</li>
+        <li>THIRUNELVELI</li>
+      </ul>
+    </li>
+    <li>
+      Virtual Tour
+      <ul>
+        <li>🏛 Mamallapuram</li>
+        <li>🌊 Rameswaram</li>
+        <li>⛩ Darasuram Temple</li>
+      </ul>
+    </li>
+    <li>Gallery</li>
+    <li>Experiences</li>
+    <li class="login-btn" onclick="openModal()">Login</li>
+  </ul>
+</nav>
+
+<!-- Slideshow -->
+<div class="slideshow-container">
+  <div class="slide"></div>
+  <div class="overlay-text">
+    <h1>Welcome to Tamil Nadu</h1>
+    <p>Discover the Land of Temples, Culture, and Natural Beauty</p>
+  </div>
+</div>
+
+<!-- Experiences Section -->
+<section class="experiences">
+  <h2>Experiences</h2>
+  <div class="boxes">
+    <div class="box adventure" onclick="showAdventurePage()">
+      <div class="text">Adventure</div>
+    </div>
+    <div class="box eat" onclick="showFoodPage()">
+      <div class="text">Eat & Drink</div>
+    </div>
+    <div class="box spiritual"><div class="text">Spiritual</div></div>
+  </div>
+</section>
+
+<!-- Adventure Page Section -->
+<div class="adventure-page" id="adventurePage">
+  <h1>Tamil Nadu Adventures</h1>
+  <p>Explore the thrilling adventures that Tamil Nadu has to offer!</p>
+  
+  <!-- Video Section -->
+  <div class="video-section">
+    <h2>Tamil Nadu Adventure Places</h2>
+    <video controls>
+      <source src="F:\Mini Project\Miniproject III\TravelAura\Videos\Adventures in Tamil Nadu_free.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p>Explore the breathtaking adventure spots in Tamil Nadu!</p>
+  </div>
+
+  <button onclick="showMainPage()" class="back-btn">Back to Home</button>
+</div>
+
+<!-- Food Page Section -->
+<div class="food-page" id="foodPage">
+  <h1>Tamil Nadu Famous Foods</h1>
+  <p>Discover the delicious and famous foods of Tamil Nadu!</p>
+  
+  <!-- Video Section -->
+  <div class="video-section">
+    <h2>Famous Foods of Tamil Nadu</h2>
+    <video controls>
+      <source src="F:\Mini Project\Miniproject III\TravelAura\Videos\Famous Foods of Tamil Nadu_free.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p>Explore the culinary delights of Tamil Nadu!</p>
+  </div>
+
+  <button onclick="showMainPage()" class="back-btn">Back to Home</button>
+</div>
+
+<!-- Login/Signup Modal -->
+<div id="loginModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+
+    <div id="loginForm">
+      <h2>Login</h2>
+      <div>
+        <input type="text" id="loginUsername" placeholder="Username" autocomplete="username" />
+      </div>
+      <div>
+        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
+      </div>
+      <button id="loginBtn">Login</button>
+      <div class="toggle-link" onclick="showSignup()">Don't have an account? Sign up here</div>
+    </div>
+
+    <div id="signupForm" style="display:none">
+      <h2>Sign Up</h2>
+      <div>
+        <input type="text" id="signupUsername" placeholder="Username" autocomplete="username" />
+      </div>
+      <div>
+        <input type="email" id="signupEmail" placeholder="Email" autocomplete="email" />
+      </div>
+      <div>
+        <input type="tel" id="signupPhone" placeholder="Phone Number" autocomplete="tel" />
+      </div>
+      <div>
+        <input type="text" id="signupAddress" placeholder="Address" autocomplete="address-line1" />
+      </div>
+      <div>
+        <input type="password" id="signupPassword" placeholder="Password" autocomplete="new-password" />
+      </div>
+      <button id="signupBtn">Sign Up</button>
+      <div class="toggle-link" onclick="showLogin()">Already have an account? Login here</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Page (after login/signup) -->
+
+
+<!-- Welcome Page (optional, can be removed if using mainPage) -->
+<div id="welcomePage" style="display:none;">
+  <div class="welcome-content">
+    <h1>Welcome!</h1>
+    <p>You have successfully logged in or signed up.</p>
+    <button onclick="logout()" class="back-btn">Logout</button>
+  </div>
+</div>
+<!-- Add this line just before closing </body> tag, after script.js -->
+<script src="script.js"></script>
+</body>
+</html>
