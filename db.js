@@ -1,9 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/tourismApp');
+mongoose.connect("mongodb+srv://Santhosh-Krishnan:bepositive@mini.apefkhq.mongodb.net/?retryWrites=true&w=majority&appName=Mini", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => console.log('MongoDB connected.'));
-
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => console.log("✅ MongoDB Atlas connected."));
 module.exports = db;
